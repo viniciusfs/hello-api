@@ -4,7 +4,7 @@ import random
 from flask import Flask, jsonify, request
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 COUNTRIES = [ 'brazil', 'usa', 'canada', 'japan', 'england', 'china', 'india' ]
 
@@ -20,4 +20,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(debug=True)
