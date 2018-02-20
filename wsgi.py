@@ -1,16 +1,14 @@
-#!/usr/bin/env python
-
 import datetime
 import random
 
 from flask import Flask, jsonify, request
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 COUNTRIES = [ 'brazil', 'usa', 'canada', 'japan', 'england', 'china', 'india' ]
 
-@app.route('/api/v1/hello', methods=['GET', 'POST'])
+@application.route('/api/v1/hello', methods=['GET', 'POST'])
 def hello():
     now = datetime.datetime.now()
     country = random.choice(COUNTRIES)
@@ -22,4 +20,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(debug=True)
