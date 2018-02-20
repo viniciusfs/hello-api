@@ -8,7 +8,7 @@ application = Flask(__name__)
 
 COUNTRIES = [ 'brazil', 'usa', 'canada', 'japan', 'england', 'china', 'india' ]
 
-@application.route('/api/v1/hello', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def hello():
     now = datetime.datetime.now()
     country = random.choice(COUNTRIES)
