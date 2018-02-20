@@ -6,15 +6,15 @@ from flask import Flask, jsonify, request
 
 application = Flask(__name__)
 
-COUNTRIES = [ 'brazil', 'usa', 'canada', 'japan', 'england', 'china', 'india' ]
+HELLO = [ 'bonjour', 'hola', 'hallo', 'hello', 'ciao', 'ola', 'namaste', 'salaam' ]
 
 @application.route('/', methods=['GET', 'POST'])
 def hello():
     now = datetime.datetime.now()
-    country = random.choice(COUNTRIES)
+    hello = random.choice(HELLO)
 
     if not request.json:
-        return jsonify({'hello': country, 'datetime': now}), 200
+        return jsonify({'hello': hello, 'datetime': now}), 200
     else:
         return jsonify({'hello': request.json['name'], 'datetime': now}), 200
 
