@@ -1,6 +1,6 @@
 # Hello API
 
-An really cool greetings API.
+Just an example application.
 
 
 ## Running
