@@ -1,0 +1,12 @@
+[
+    {
+        "name": "hello-api",
+        "image": "327667905059.dkr.ecr.us-east-1.amazonaws.com/devops/hello-api:latest",
+        "memory": 128,
+        "portMappings": [
+            {
+                "containerPort": 5000
+            }
+        ]
+    }
+]
