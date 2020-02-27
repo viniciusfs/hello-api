@@ -6,6 +6,7 @@
 
 LOG_FILE="build.log"
 COMMIT_HASH=$(git log --pretty=format:%h -n 1)
+REPO_NAME="devops/hello-api"
 
 
 f_log() {
@@ -14,7 +15,8 @@ f_log() {
 
 f_clean() {
 	f_log "Cleaning temporary files and directories..."
-	rm -rf tfplan* .terraform/ .terraform_init.lock build.log
+        find . -name "*.log" -exec rm {} \;
+	rm -rf terraform/tfplan* .terraform/ .terraform_init.lock
 }
 
 f_build_testplan() {
@@ -83,8 +85,9 @@ f_terraform_init() {
 			exit 1
 		fi
 	else
-		export TF_LOG=WARN
-		export TF_LOG_PATH=../terraform.log
+		export TF_LOG_PATH=terraform.log
+
+                cd terraform
 
 		f_log "Trying to initialize Terraform..."
 		terraform init -no-color
@@ -114,6 +117,10 @@ f_terraform_refresh() {
         terraform refresh -var-file=environments/${ENV}.tfvars
 }
 
+f_docker_build_image() {
+        docker build -t ${REPO_NAME} .
+}
+
 case "$1" in
         clean)
                 f_clean
@@ -138,6 +145,10 @@ case "$1" in
 	refresh)
 		f_terraform_refresh
 	;;
+
+        build-image)
+                f_docker_build_image
+        ;;
 
 	*)
 		echo "usage: build.sh testplan|plan|apply|clean|refresh"

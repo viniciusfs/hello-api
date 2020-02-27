@@ -2,6 +2,6 @@ version: '3'
 
 services:
   hello-api:
-    image: hello-api:latest
+    image: devops/hello-api:latest
     ports:
-      - 8000:8000
+      - 5000:5000
