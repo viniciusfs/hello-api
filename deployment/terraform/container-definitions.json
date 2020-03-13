@@ -1,0 +1,13 @@
+[
+    {
+        "name": "${name}",
+        "image": "${repository_url}/${image_name}:${image_tag}",
+        "memory": ${container_memory},
+        "cpu": ${container_cpu},
+        "portMappings": [
+            {
+                "containerPort": ${container_port}
+            }
+        ]
+    }
+]
