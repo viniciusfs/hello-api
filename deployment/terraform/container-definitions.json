@@ -8,6 +8,13 @@
             {
                 "containerPort": ${container_port}
             }
-        ]
+        ],
+        "logConfiguration": {
+            "logDriver": "fluentd",
+                "options": {
+                    "fluentd-async-connect": "true",
+                    "tag": "${name}-${environment}"
+            }
+        }
     }
 ]
